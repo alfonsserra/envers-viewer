@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.systelab</groupId>
-    <artifactId>envers-viewer</artifactId>
+    <artifactId>systelab-envers-utilities</artifactId>
     <version>1.1.0</version>
     <packaging>jar</packaging>
     <name>envers-viewer</name>
-    <url>https://github.com/systelab/systelab-envers-viewer</url>
+    <url>https://github.com/systelab/systelab-envers-utilities</url>
     <description>Envers Viewer</description>
     <scm>
         <url>https://svn.apache.org/viewvc/maven</url>
