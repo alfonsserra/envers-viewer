@@ -1,7 +1,7 @@
 
-# ArchUnit utilities
+# Envers viewer utilities
 
-This is a Java libraries with some utilities ...
+This is a Java library with some utilities ...
 
 ## Getting Started
 
@@ -44,7 +44,7 @@ Step 2. Commit and push in the master branch, and generate a new Release by pres
 
 In the example use v1.1.0 as the Tag version, and 1.1.0 as the release title.
 
-Step 3. Head to https://jitpack.io and look up "systelab/arch-utils". Choose the new version and press the button "Get it". Check the log to verify that everything is fine.
+Step 3. Head to https://jitpack.io and look up "systelab/systelab-envers-viewer". Choose the new version and press the button "Get it". Check the log to verify that everything is fine.
 
 
 ## Using the library
