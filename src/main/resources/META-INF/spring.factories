@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.systelab.envers.config.SpringEnversUtilitiesAutoConfiguration
+com.systelab.envers.config.AuditConfiguration
