@@ -28,7 +28,7 @@ public class RevisionService {
                     .forRevisionsOfEntityWithChanges(revisionEntityClass, true);
         } else {
             auditQuery = auditReader.createQuery()
-                    .forRevisionsOfEntity(revisionEntityClass, true);
+                    .forRevisionsOfEntity(revisionEntityClass, false,  true);
         }
         auditQuery.add(AuditEntity.id().eq(id));
         return auditQuery.getResultList();
