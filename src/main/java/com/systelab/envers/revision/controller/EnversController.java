@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Tag(name = "Envers utilities")
@@ -55,6 +56,20 @@ public class EnversController {
                                                               @RequestParam(value = "fetchChanges", required = false) boolean fetchChanges,
                                                               @RequestParam(value = "class") String className) throws ClassNotFoundException {
         return ResponseEntity.ok(revisionService.getRevisionsByUserByDate(fetchChanges, Class.forName(className), dateFrom));
+    }
+
+    @Operation(description = "Get Entities by revision id")
+    @SecurityRequirement(name = "Authorization")
+    @GetMapping(path = "entities/{revisionId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getEntitiesByRevisions(@PathVariable(name = "revisionId") int revisionID) throws ClassNotFoundException {
+        return ResponseEntity.ok(revisionService.getModifiedEntityTypes(revisionID));
+    }
+
+    @Operation(description = "Get entity names and corresponding Java classes modified in a given revision")
+    @SecurityRequirement(name = "Authorization")
+    @GetMapping(path = "entities/classes/{revisionId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> getEntitiesClassNameByRevisions(@PathVariable(name = "revisionId") int revisionID) throws ClassNotFoundException {
+        return ResponseEntity.ok(revisionService.getModifiedEntityNamesJavaClass(revisionID));
     }
 
 }

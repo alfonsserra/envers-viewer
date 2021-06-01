@@ -3,6 +3,7 @@ package com.systelab.envers.revision.service;
 import org.hibernate.envers.AuditReader;
 import org.hibernate.envers.query.AuditEntity;
 import org.hibernate.envers.query.AuditQuery;
+import org.hibernate.envers.tools.Pair;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -61,8 +63,18 @@ public class RevisionService {
                     .forRevisionsOfEntity(revisionEntityClass, false,  true);
         }
         long now = new Timestamp(System.currentTimeMillis()).getTime();
+        //1622532540000
         auditQuery.add(AuditEntity.revisionProperty("timestamp").between(dateFrom, now));
 
         return auditQuery.getResultList();
+    }
+
+
+    public List<?> getModifiedEntityTypes (int revisionId) {
+      return auditReader.getCrossTypeRevisionChangesReader().findEntities(revisionId);
+    }
+
+    public Set<Pair<String, Class>> getModifiedEntityNamesJavaClass (int revisionId) {
+        return auditReader.getCrossTypeRevisionChangesReader().findEntityTypes(revisionId);
     }
 }
